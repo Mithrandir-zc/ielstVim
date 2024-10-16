@@ -23,5 +23,5 @@ exit to exit
 - University: CUGB
 - Email: 3486943371mzc@gmail.com
 - commitment:
-- It's just try to build exe py python PySide6, and Welcome all to upgrade it
-- If you're interested in it, welcome to send email to me and add my Discord or WeChat.
+  - It's just try to build exe py python PySide6, and Welcome all to upgrade it
+  - If you're interested in it, welcome to send email to me and add my Discord or WeChat.
