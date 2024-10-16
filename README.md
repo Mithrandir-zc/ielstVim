@@ -7,8 +7,8 @@
 - **I** to switch to insert mode
 - **T** to switch to dictation mode
 - when It's dictation mode:
-- press **Escape** to terminate it and get your dictation report
-- and press **Enter** to back to normal mode
+  - press **Escape** to terminate it and get your dictation report
+  - and press **Enter** to back to normal mode
 ## command line
 - **ls** to display directory list
 - **cd** to change directory
