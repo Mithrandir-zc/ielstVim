@@ -1,23 +1,23 @@
 # ielstVim
 - A vim-like text editor for ielst dictation
 # Brief
-- F3 to switch between text editor and command line
+- **F3** to switch between text editor and command line
 ## text editor
 - It's default normal mode
-- I to switch to insert mode
-- W to switch to dictation mode
+- **I** to switch to insert mode
+- **T** to switch to dictation mode
 - when It's dictation mode:
-- press Escape to terminate it and get your dictation report
-- and press Enter to back to normal mode
+- press **Escape** to terminate it and get your dictation report
+- and press **Enter** to back to normal mode
 ## command line
-- ls to display directory list
-- cd to change directory
-- mkdir to create new folder
-- touch to create new file
-- mrdir to delete folder
-- mr to delete file
-- open to open file
-- close to close file
+- **ls** to display directory list
+- **cd** to change directory
+- **mkdir** to create new folder
+- **touch** to create new file
+- **mrdir** to delete folder
+- **mr** to delete file
+- **open** to open file
+- **close** to close file
 exit to exit
 ## author:
 - University: CUGB
