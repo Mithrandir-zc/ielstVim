@@ -1,0 +1,33 @@
+Sysnonyms:[]
+corrections:
+[
+	{
+	source: Part1
+	sentence: I need to get to work in the city by 9:00 so I'll drop her off at 8:30
+	tips: drop her off at 8:30 "at 8:30" 连读听不清
+	},
+	{
+	source: Part2
+	sentence: You'd probably expect hiim to be the youngest - he's not quite - that's kiwi - but Samon's the 					latest of our dolphins to be chosen for the scheme 
+	tips: reversed reversed answer !!!
+	}
+	sentence: Although it's not meant an enormous amount money for us, it has made our activities even more 					widely publicised and understood 
+	tips: enormous amount 连读 enormous amount 
+		 publicise /pabisaiz/	
+	{
+}
+]
+voca:[expertise(专业技能), enormous, elusive(难以琢磨), vigour(活力), sponsor(有动词形式的), fin(鱼鳍), aspiration(ambition)]
+chunks:
+[
+	so forth (= so on), 
+]
+cares:
+[may not,
+haven't done,
+This has long been,
+can't
+I had never, I hadn't been (had 很轻)
+adopt a dolphin (NOT a doctor dolphin)
+for the scheme (NOT for this game)
+]

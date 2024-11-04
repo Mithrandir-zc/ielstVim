@@ -1,11 +1,13 @@
 import sys
 import os
 import shutil
-from PySide6.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout, QLineEdit, QMessageBox, QSplitter
-from PySide6.QtCore import Qt,QEvent
-from PySide6.QtGui import QFont, QTextCursor
-from PySide6.QtGui import QFontDatabase
 
+import re
+from PySide6.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout, QLineEdit, QMessageBox, QSplitter
+from PySide6.QtCore import Qt,QEvent,QTimer
+from PySide6.QtGui import QFont, QKeyEvent, QTextCursor
+from PySide6.QtGui import QFontDatabase
+import pyttsx3
 
 class Vim(QWidget):
     def __init__(self):
@@ -18,13 +20,14 @@ class Vim(QWidget):
         self.current_index = 0
         self.test_content = []
         self.current_directory = os.getcwd()
+
         #initilize UI
         self.initUI()
+        self.text_editor.installEventFilter(self)
         self.active_module = 'command_line'              
         self.command_line.setFocus()
-        self.text_editor.installEventFilter(self)
         self.update_directory_view()
-        self.to_mode_normal()
+        # self.to_mode_normal()
 
     def initUI(self):
         # 设置无边框窗口，但不使用完全透明的背景
@@ -54,6 +57,7 @@ class Vim(QWidget):
         font = QFont('consolas', 28)
         font.setItalic(True)
         self.directory_shower.setFont(font)
+        self.directory_shower.setEnabled(False)
         splitter.addWidget(self.directory_shower)
         # 设置文本编辑框
         self.text_editor = QTextEdit(self)
@@ -78,13 +82,36 @@ class Vim(QWidget):
         self.setLayout(layout)
         
         self.setWindowTitle('ILETSER')
+    def eventFilter(self, obj, event):
+        if obj == self.text_editor and event.type() == QEvent.KeyPress:
+            # Intercept key press events here
+            self.handle_text_editor_keys(event)
+            return True
+        
+        return super().eventFilter(obj, event)
+
+
     def update_directory_view(self):
         self.current_directory = os.getcwd()
         self.directory_shower.setText(self.current_directory)
         files_and_dirs = os.listdir(self.current_directory)
+
+        directories = sorted([d for d in files_and_dirs if os.path.isdir(os.path.join(self.current_directory, d))])
+        files = sorted([f for f in files_and_dirs if os.path.isfile(os.path.join(self.current_directory, f))])
+ 
         self.text_editor.clear()
         self.text_editor.append(f"Current Directory: {self.current_directory}")
-        self.text_editor.append("\n".join(files_and_dirs))
+
+        if directories:
+            self.text_editor.append("Directories:")
+            self.text_editor.append("\n".join(directories) + "\n")
+        
+        if files:
+            self.text_editor.append("Files:")
+            self.text_editor.append("\n".join(files))
+        
+        self.to_mode_normal()
+
     def show_error(self, message):
         #show error info
         error_box = QMessageBox()
@@ -242,7 +269,9 @@ class Vim(QWidget):
     def to_mode_test(self):
         self.mode_flag = "test"
         self.current_index = 0
-        self.test_content = self.read_from_file().split('\n')
+        testContent = re.sub(r'##.*?##', '', self.read_from_file(), flags=re.DOTALL).strip()
+        self.test_content = testContent.split('\n')
+        
         self.user_input = ""
         self.user_line = []
         self.text_editor.clear()
@@ -282,21 +311,21 @@ class Vim(QWidget):
         if key == Qt.Key_Return or key == Qt.Key_Enter:
             self.execute_command()
         elif key == Qt.Key_F3:
-            print("up to text editor")
             self.active_module = 'text_editor'  # 切换到 text_editor 模块
             self.text_editor.setFocus()
         else:
-            super().keyPressEvent(event)    
+            self.command_line.keyPressEvent(event)    
+
 
     def handle_text_editor_keys(self, event):
         key = event.key()
-        print(f"in text_editor {key}")
         if self.mode_flag == "insert":
             if key == Qt.Key_Escape:
                 self.out_mode_insert()
                 self.to_mode_normal()
             else:
-                super().keyPressEvent(event)
+                self.text_editor.keyPressEvent(event)
+
         elif self.mode_flag == "normal":
             if key == Qt.Key_I:
                 self.to_mode_insert()
@@ -305,44 +334,38 @@ class Vim(QWidget):
             if key == Qt.Key_Q:
                 self.close()
             elif key == Qt.Key_F3:
-                print("down to command line")
                 self.active_module = 'command_line'  # 切换到 command_line 模块
                 self.command_line.setFocus()
 
         elif self.mode_flag == "test":
-            # 检测 Shift + Enter
+
             if key == Qt.Key_Return or key == Qt.Key_Enter:
-                if event.modifiers() == Qt.ShiftModifier:
-                    super().keyPressEvent(event)  # Shift+Enter 允许换行
-                elif "Press Enter to exit test mode..." in self.text_editor.toPlainText():
-                    # 如果已提示退出测试模式，按下 Enter 则退出测试模式
+                current_text = self.text_editor.toPlainText().replace('\n', '').strip()
+                if "Press Enter to exit test mode..." in current_text:
                     self.out_mode_test()
                     self.to_mode_normal()
                 else:
-                    # 阻止 Enter 键默认行为（避免换行）
-                    pass
-
+                    self.text_editor.keyPressEvent()
             # 检测 Escape，显示比对结果并提示按 Enter 退出
             elif key == Qt.Key_Escape:
                 store_content = self.user_input
                 self.text_editor.clear()
-                # self.text_editor.setEnabled(False)
-                self.text_editor.clearFocus()
-                # 比较标准内容和用户输入内容
+
                 self.text_editor.append("Test Result:\n")
                 flag = True
                 for word1, word2 in zip(self.test_content, store_content):
-                    if word1 != word2:
+                    word_processing = re.sub(r'\(.*?\)', '', word1).strip()
+                    if word_processing != word2:
                         flag = False
                         self.text_editor.append(f"STD: {word1} YOURS: {word2}\n")
-                    # print(word1+" "+word2)
+
                 if flag and len(self.test_content)==len(store_content):
                     self.text_editor.append(f"Congratulations! Full Mark Dictation!")
                 # 提示用户按 Enter 退出测试模式
                 self.text_editor.append("\nPress Enter to exit test mode...")
             else:
-                super().keyPressEvent(event)  # 其他键继续处理
 
+                self.text_editor.keyPressEvent(event)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

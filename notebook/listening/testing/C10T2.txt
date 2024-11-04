@@ -1,0 +1,103 @@
+Misspelling:
+[safe, flexiable, hairdresser]
+
+Synonyms:
+[
+newspaper: press
+statue: sculpture, figure, carving
+fort: fortifications
+large: major 
+increase: greater larger and ...
+consulating: discussion 
+more: strengthen
+provide: require
+greatest influence: lasting impression
+increase in power: reversed losing power to
+]
+
+expression:
+[
+	{
+	source: Part2
+	sentence: As many of you may know, the idea for these initiatives came from you-The public, in 				the extensive consulation exercise which the City Council conducted last year
+	specific:
+		initiatives: a new plan or process to achieve something or solve a problem 
+				  the ability to use your judgement to make decisions and do things without 					  needing to be told what to do
+		exercise: other meaning: an action or actions intended to improve something or making 					     something happen
+	},
+	{
+	source: Part2
+	sentence: with up-to-the-minute features such as recycling system - the only one of its kind in 			the world which enables seawater to be used in the pool
+	specific: up-to-the-minute
+	},
+	{
+	source: Part2
+	sentence: There has been quite a bit of discussion in local press about whether there would be 				enough room for the number of visitors we are hoping to attract, but the design is 				deceptive and there have been rigorous checks about capacity  
+	specific: there, there and there! there was there have been quite a bit of discussion and 					whether there would be enought room for the number of visitors, finally  there have 				been rigorous checks about capacity
+	tips: there are were have been will 
+	},
+	{
+	source: Part2
+	sentence: just in case you were wondering, we're on schedule for a june 15th opeing date and 				well within budget: a testimony to the excellent work of local contractors Hickman's	
+	specific: we're on schedule for a date 
+			well with in budget 
+	tips: schedule for a day
+	},
+	{
+	source: Part3
+	sentence: I guess that they needed that knowledge in order to live wild in a remote location 				with few inhabitants, cut off by the sea, which is what they were aiming to do 
+	specific: the postposition sentence "which is what they were aiming to do" marked the answer
+	tips: answer postposition
+	},
+	{
+	source: Part3
+	sentence: To my mind, he was the first person to establish what modern academics called 					practical archaeology	
+	specific: "called practical archaeology" is a classic answer postposition
+	tips: answer postposition
+	},
+	{
+	source: Part3
+	sentence: I thought the research methods he uesd were very sound, although I must say I found 				the overall tone somewhat old-fashioned
+	specific: "very sound" means "really make sense", found sth somewhat(which is a adverb) adj
+	},
+	{
+	source: Part4
+	sentence: One area I want to mention is business markets, and I'm sure a really significant 				developement will be a major increase in competition, with companies from all around 			the world trying to sell similar products
+	specific: greater ____ among companies, that's why translation is important, "更多的什么" 					matches increase	
+	},
+	{
+	source: Part4
+	sentence: At the same time, mergers and takeovers mean that governments are actually losing 				power to major global companies
+	specific: governments are losing power to global companies, that means global companies are 				more powerful "increase in power of large _____ companies" 
+	source: antynom!!!! losing power <-> increase of power
+	},
+	{
+	source: Part4
+	sentence: A thrid point I want to make about markets is that in the rapidly expanding 						economics, such as india, China, Brazi and Russia, demand is growing very fast
+	tips: care sentence breaks, answer postposition
+	}
+	{
+	source: Part4
+	sentence: business are having to compete for staff instead of being able to choose among a lot 				of applicants
+	specific: really good expression "business compete for people, not people struggling for job"
+	}
+	{
+	source: Part4
+	sentences: Senior managers will require a lot more than the efficiency that they've always 					needed. Above all they'll need great skills in leadership	
+	specific: more than efficiency plus need -> increasing need, skills in -> provide
+	}
+]
+
+chunks:
+[
+it was more matter of
+seem to be that 
+a major increase in 
+exert influence 
+intellectual property(IP)
+we can't overlook(something like denying of denying)
+losing power to
+]
+voca:
+[commission(委员会), renowned, deceptive(可信的), rigorous(严谨的), capacity, fauna(动植物群), 
+rink(冰场), replicate(复刻), medieval, fortifications, mosaics(马赛克), trails(route), amenity(（水上）乐园), reeds(芦苇), canoe(独木舟), raft(筏子), costal voyage, disprove and discredit, discipline(可以是学科), exert(施加), regulation(法规)]

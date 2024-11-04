@@ -1,0 +1,74 @@
+holiday
+##
+	A/an ______ holiday
+	[
+	camping, skiing, summer/winter, package, cruise, backpack, bank
+	] 
+	##
+		A holiday = 
+		{
+		 at time when you don't work, so you can travel or relax, 
+		 officail day off work, for national or religious celebrations 	
+		} 	
+		Synonyms = [vacation (U.S.)]
+	##	
+	camping
+	skiing
+	summer/winter
+	beach
+	package(where everything is included, food, tours, drinks, travel...)
+	All-inclusive(same as package holiday)
+	curise(going on a ship)
+	backpack
+	
+	Let's go backpacking	
+	We are going on our honeymoon (honeymoon holiday -> holiday)
+##
+break
+##
+	A _____ break
+	city (is not that you go to countryside from a city, by contrast, it's that you go to a another 		city)
+	countryside
+	I want to go on a city break		
+##
+holiday maker
+##
+	Synonyms = [sightseer, tourist, traveller, visitor, Nomad] 
+	##
+		nomad	(for example: digital nomad)
+		travller (person who often travels)
+	##
+##
+accommodation
+##
+	staying in the hotel (living in your house but you're staying in the hotel)
+	
+##
+itinerary 
+##
+	itinerary = a planned route or journey (list of destination, times, activities)
+	EG:
+	[
+	 Have you made a daily itinerary for your holiday,
+	 Have you made a travel itinerary
+	]
+##
+budget
+##
+	budget (noun) = A financial plan	
+	EG:
+	[
+	 We need to draw up a budget (= make a budget)
+	 Let's stick to the budget (= to follow)
+	 It's not within our budget (= too expensive)
+	 budget-firendly
+	] 
+	
+	budget (verb) =  plan how much you will spend
+	EG: [I haven't budgeted for food]
+	
+	budget (adjective)
+	synonyms  = [cost-effective, cheap]
+	EG: [budget hotel] 	
+##
+##
