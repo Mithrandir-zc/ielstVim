@@ -1,6 +1,7 @@
 import sys
 import os
 import shutil
+
 import re
 from PySide6.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout, QLineEdit, QMessageBox, QSplitter
 from PySide6.QtCore import Qt,QEvent
@@ -257,6 +258,7 @@ class Vim(QWidget):
         self.current_index = 0
         testContent = re.sub(r'##.*?##', '', self.read_from_file(), flags=re.DOTALL).strip()
         self.test_content = testContent.split('\n')
+        
         self.user_input = ""
         self.user_line = []
         self.text_editor.clear()
@@ -301,6 +303,7 @@ class Vim(QWidget):
         else:
             self.command_line.keyPressEvent(event)    
 
+
     def handle_text_editor_keys(self, event):
         key = event.key()
         print(f"in text_editor {key}")
@@ -310,6 +313,7 @@ class Vim(QWidget):
                 self.to_mode_normal()
             else:
                 self.text_editor.keyPressEvent(event)
+
         elif self.mode_flag == "normal":
             if key == Qt.Key_I:
                 self.to_mode_insert()
@@ -323,6 +327,7 @@ class Vim(QWidget):
                 self.command_line.setFocus()
 
         elif self.mode_flag == "test":
+
             if key == Qt.Key_Return or key == Qt.Key_Enter:
                 current_text = self.text_editor.toPlainText().replace('\n', '').strip()
                 if "Press Enter to exit test mode..." in current_text:
@@ -330,11 +335,11 @@ class Vim(QWidget):
                     self.to_mode_normal()
                 else:
                     self.text_editor.keyPressEvent()
-
             # 检测 Escape，显示比对结果并提示按 Enter 退出
             elif key == Qt.Key_Escape:
                 store_content = self.user_input
                 self.text_editor.clear()
+
                 self.text_editor.append("Test Result:\n")
                 flag = True
                 for word1, word2 in zip(self.test_content, store_content):
@@ -342,11 +347,13 @@ class Vim(QWidget):
                     if word_processing != word2:
                         flag = False
                         self.text_editor.append(f"STD: {word1} YOURS: {word2}\n")
+
                 if flag and len(self.test_content)==len(store_content):
                     self.text_editor.append(f"Congratulations! Full Mark Dictation!")
                 # 提示用户按 Enter 退出测试模式
                 self.text_editor.append("\nPress Enter to exit test mode...")
             else:
+
                 self.text_editor.keyPressEvent(event)
 
 if __name__ == '__main__':
