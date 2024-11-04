@@ -4,10 +4,10 @@ import shutil
 
 import re
 from PySide6.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout, QLineEdit, QMessageBox, QSplitter
-from PySide6.QtCore import Qt,QEvent
-from PySide6.QtGui import QFont, QTextCursor
+from PySide6.QtCore import Qt,QEvent,QTimer
+from PySide6.QtGui import QFont, QKeyEvent, QTextCursor
 from PySide6.QtGui import QFontDatabase
-
+import pyttsx3
 
 class Vim(QWidget):
     def __init__(self):
@@ -87,6 +87,7 @@ class Vim(QWidget):
             # Intercept key press events here
             self.handle_text_editor_keys(event)
             return True
+        
         return super().eventFilter(obj, event)
 
 
@@ -94,9 +95,21 @@ class Vim(QWidget):
         self.current_directory = os.getcwd()
         self.directory_shower.setText(self.current_directory)
         files_and_dirs = os.listdir(self.current_directory)
+
+        directories = sorted([d for d in files_and_dirs if os.path.isdir(os.path.join(self.current_directory, d))])
+        files = sorted([f for f in files_and_dirs if os.path.isfile(os.path.join(self.current_directory, f))])
+ 
         self.text_editor.clear()
         self.text_editor.append(f"Current Directory: {self.current_directory}")
-        self.text_editor.append("\n".join(files_and_dirs))
+
+        if directories:
+            self.text_editor.append("Directories:")
+            self.text_editor.append("\n".join(directories) + "\n")
+        
+        if files:
+            self.text_editor.append("Files:")
+            self.text_editor.append("\n".join(files))
+        
         self.to_mode_normal()
 
     def show_error(self, message):
@@ -306,7 +319,6 @@ class Vim(QWidget):
 
     def handle_text_editor_keys(self, event):
         key = event.key()
-        print(f"in text_editor {key}")
         if self.mode_flag == "insert":
             if key == Qt.Key_Escape:
                 self.out_mode_insert()
@@ -322,7 +334,6 @@ class Vim(QWidget):
             if key == Qt.Key_Q:
                 self.close()
             elif key == Qt.Key_F3:
-                print("down to command line")
                 self.active_module = 'command_line'  # 切换到 command_line 模块
                 self.command_line.setFocus()
 

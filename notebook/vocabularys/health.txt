@@ -1,0 +1,18 @@
+health
+##
+	health = the condition of the body and state of being well 
+	EG:
+	[
+		[Physical, Mental, Preventavtive] health,		
+		To be in [good, poor, declining, fragile] health,
+		To [promote, boost, improve] your health
+			Superfoods can boost your health
+			Ultra-processed foods do not boost your health, they harm your health  	
+		I'm in good health, but my grandad is sick and in declining health,
+		I'm in poor health/ My health situation is not good
+		I'm in good health -> I have never felt better/ I am alive and kicking
+		I'm going downhill 
+	]
+	Synonyms: [well-being, wellness, fitness]
+	Declining = going down, getting worse 
+##
