@@ -23,7 +23,7 @@ project
 promotion
 prone (likely to be, to do or to affected by something "bad"; lying face down)
 property
-rpospectious
+prospectious
 protein
 psychiatrist
 psychologist

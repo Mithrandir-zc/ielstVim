@@ -1,3 +1,29 @@
+##
+STD: medicine YOURS: medicion
+medicine medicine medicine medicine medicine medicine medicine
+medicine medicine medicine medicine medicine medicine
+
+medication is a medicine or a set of medicine 
+
+STD: mile YOURS: mill
+mile /mail/ mile mile mile mile mile mile two thousand miles  ai mile 
+mill /mil/ mill wind mill mill iiii mill 
+mail /meil/ mail
+
+STD: mileage YOURS: ?
+
+STD: mill YOURS: ?
+
+STD: monopoly (Â¢¶Ï) YOURS: manupalate
+monopoly monopoly monopoloy monoploy monoploy 
+
+STD: mosquito YOURS: mosqitus
+mosquito mosquito mosquito mosquito mosquito mosquito mosquito mosquito mosquito 
+
+STD: motel YOURS: mo
+motel: a hotel for people travelling by car
+
+##
 hotel
 hotline
 hunt

@@ -1,40 +1,49 @@
-## STD: documentary YOURS: documentory
-documentary documentary documentary documentary documentary documentary documentary
-STD: draft YOURS: drafts
-
-STD: elements YOURS: element
-
-STD: energies YOURS: energy
-
-STD: equipment YOURS: e
-
-STD: ethic YOURS: e
-ethic ethic ethic ethic ethic eternal ethereal 
-
-ethical (morally right)
+##
+explanation (没有i)
 ethic (system based on morals)
+ethical (morally right)
+ethnic (民族的)
+ethnical (人种的)
 ethereal (ethereal edge 虚灵刀)
 eternal (eternal shroud 永世法衣)
+exposure(暴露), explosion == boom!!
 
-STD: existence YOURS: existance
-existence existence existence existence
+test7:
+prevent prevention 
+privacy private
+promote promotion prompt
+protein (蛋白质)
+prone (likely) EG: Old people's bones are more prone to fracture
+psychiatrist psy-chi-a-trist (精神病学家)
+psychologist psy-cho-logist (心理学家)
+psychotherapy psy-cho-therapy (心理疗法) 
+therapy (理疗)
+purse (钱包)
+radio radio radio radio
+repeat -> repetition 
+restaurant rest-au-rant 
 
-STD: explanation YOURS: expo
-explanation explanation explanation explanation 
-
-STD: explosion YOURS: exp
-explosion explosion  explosion 
-
-explosion == boom
-
-STD: exposure YOURS: ex 
-exposure exposure exposure exposure exposure 
-(暴露)
 ##
-
 documentary
 ethic
+ethical
+ethnic
+ethnical
+ethereal
+eternal
 existence
 explanation
 explosion
 exposure
+prevention
+promotion
+prompt
+protein
+prone
+psychiatrist
+psychologist
+psychotherapy
+radio
+purse
+repetition
+restaurant
