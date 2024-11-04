@@ -3,7 +3,7 @@ tea
 teacher
 teaching
 team
-jargon (行话，黑话)
+jargon (行话，黑话 )
 term
 technology
 teeth
@@ -62,7 +62,7 @@ travel
 traveler
 treatment
 trip
-tribe (部落)
+tribe (部落 )
 tribute
 tributes
 trinity
@@ -71,13 +71,13 @@ trouble
 tube
 tunnels
 tuition
-tune
+tune 
 tunes
 tutor
 type
 umpire (referee)
 understanding
-utensil (a tool with particular use, especaill in a kitchen or house)
+utensil (a tool with particular use, especailly in a kitchen or house )
 uniform
 union
 university

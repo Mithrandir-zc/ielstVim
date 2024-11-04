@@ -8,7 +8,6 @@ from PySide6.QtCore import Qt,QEvent,QTimer
 from PySide6.QtGui import QFont, QKeyEvent, QTextCursor
 from PySide6.QtGui import QFontDatabase
 import pyttsx3
-
 class Vim(QWidget):
     def __init__(self):
         super().__init__()

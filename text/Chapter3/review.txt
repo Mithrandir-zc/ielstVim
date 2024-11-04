@@ -23,27 +23,134 @@ radio radio radio radio
 repeat -> repetition 
 restaurant rest-au-rant 
 
+test 9:
+text and task
+thriller
+tide
+tile
+tail
+tour
+touring
+tourism
+tourist
+tram
+trailer (挂车)
+trend
+tribe
+tube
+tuition
+tune and tone
+type
+umpire
+variety
+velvet (天鹅绒)
+vinegar
+vitamin
+vocation
+waist and waste
+wasp (黄蜂)
+welfare
+waist, waste and west 
+will and whale
+wheel and will
+willows
+wound and wood 
+
+test8: 
+sale sail /seil/ sale /sel/
+satellite satel-lite
+sauce source 同音
+score /sko/
+seminar (学术会议)
+sewage (waste matter such as water or human urine or solid waste) YOURS: ?
+sheep /fip/  shape /fep/
+shelf (架子)
+shell (壳子)
+ship sheep 同音
+site sight 同音
+skate skating
+slang (俚语)
+smell /smel/
+smile /smail/
+source sauce /o/ south /ao/
+stomach stomache
+strategy stra-te-gy
+syrup (糖浆)
+tape (磁带)
+STD: tax YOURS: task
+tax text task
 ##
+score (/sko/)
+seminar (学术会议)
+sewage (waste matter such as water or human urine or solid waste) YOURS: ?
+sheep (/fip/)
+shape (/fep/)
 documentary
 ethic
 ethical
 ethnic
+ship (sheep)
+sight (site)
+satellite
 ethnical
+syrup
 ethereal
 eternal
 existence
+stomach
 explanation
 explosion
 exposure
 prevention
 promotion
+strategy
+tape
 prompt
+tax, text and task
 protein
 prone
 psychiatrist
 psychologist
+shelf (架子)
+shell (壳子)
 psychotherapy
 radio
 purse
 repetition
 restaurant
+text and task
+thriller (恐怖篇)
+tide (*************************)
+tile (瓷砖)
+source(sauce)
+tail
+tour
+touring
+tourism
+south
+tourist
+slang (俚语)
+tram
+trailer (挂车)
+trend
+tribe
+tube
+tuition
+tune and tone
+type
+umpire
+variety
+velvet
+vinegar
+sell (/sel/)
+vitamin
+vocation
+sale (sail /seil/)
+waist and waste
+wasp (黄蜂)
+welfare
+waist, waste and west 
+will and whale
+wheel and will
+willows
+wound and wood

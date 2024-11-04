@@ -1,3 +1,7 @@
 /dist/
 /build/
 my_IELTS_vim.spec
+/text/
+/notebook/
+test.text
+vim_copy.py
