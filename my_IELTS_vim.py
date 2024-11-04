@@ -12,7 +12,8 @@ import pyttsx3
 class Vim(QWidget):
     def __init__(self):
         super().__init__()
-        #storage file path
+        #storage file path        
+        self.engine = pyttsx3.init()
         self.file_opened = False
         self.file_path = ""
         self.mode_flag = "normal"
@@ -66,7 +67,6 @@ class Vim(QWidget):
         self.text_editor.setAttribute(Qt.WA_TransparentForMouseEvents, True)
         self.text_editor.setStyleSheet("background-color: rgba(30, 30, 30, 0.8); color: #D4D4D4; padding: 20px 100px 20px 100px; margin:0; border: none;")  # 深色背景 + 浅色字体
         self.text_editor.setFont(QFont('consolas', 20))
-        self.text_editor.textChanged.connect(self.update_user_input)
 
         splitter.addWidget(self.text_editor)
         # setting command line widget
@@ -77,19 +77,49 @@ class Vim(QWidget):
         self.command_line.setFont(QFont('consolas',20))
         splitter.addWidget(self.command_line)
 
-
+        # 创建悬浮的 QLineEdit
         layout.addWidget(splitter)
         self.setLayout(layout)
-        
+
+        # 创建悬浮的 QLineEdit
+        self.floating_window = QLineEdit(self)
+        self.floating_window.setStyleSheet("background-color: rgba(30, 30, 30, 0); color: #D4D4D4; border: none;")
+        self.floating_window.setFont(QFont('consolas', 40))
+        self.floating_window.setAttribute(Qt.WA_TransparentForMouseEvents, True)
+        self.floating_window.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)  
+
+        # 计算浮动窗口的位置
+        screen = QApplication.primaryScreen()
+        screen_size = screen.size()
+        x = (screen_size.width() - 600) // 2
+        y = (screen_size.height() - 200) // 2
+        self.floating_window.setGeometry(x, y, 600, 100)
+        self.floating_window.show()
+
         self.setWindowTitle('ILETSER')
+    def speak(self, word):
+        self.engine.say(word)
+        self.engine.runAndWait()
+
+    def floating_show(self):
+        self.floating_window.setWindowOpacity(0.8)
+        self.floating_window.setFocus()
+        self.floating_window.setPlaceholderText("Enter text here...")
+
+    def floating_close(self):
+         self.floating_window.clear()
+         self.floating_window.clearFocus()
+         self.floating_window.setPlaceholderText("")
+       
     def eventFilter(self, obj, event):
         if obj == self.text_editor and event.type() == QEvent.KeyPress:
             # Intercept key press events here
             self.handle_text_editor_keys(event)
             return True
-        
+        if obj == self.floating_window and event.type() == QEvent.KeyPress:
+            self.handle_test_keys(event)
+            return True
         return super().eventFilter(obj, event)
-
 
     def update_directory_view(self):
         self.current_directory = os.getcwd()
@@ -247,8 +277,6 @@ class Vim(QWidget):
             self.update_directory_view()
         else:
             self.show_error(f"Failed to close file")    
-    def update_user_input(self):
-        self.user_input = self.text_editor.toPlainText().split('\n')
 
     # In and out of normal mode:
     def to_mode_normal(self):
@@ -272,15 +300,18 @@ class Vim(QWidget):
         testContent = re.sub(r'##.*?##', '', self.read_from_file(), flags=re.DOTALL).strip()
         self.test_content = testContent.split('\n')
         
-        self.user_input = ""
-        self.user_line = []
+        self.user_input = []
         self.text_editor.clear()
         self.text_editor.setReadOnly(False)
-        self.text_editor.setFocus()
+        # self.text_editor.setFocus()
+        
+        self.floating_show()
+
     def out_mode_test(self):
         self.text_editor.clear()
         self.load_file_content()
     # Load and save 
+
     def read_from_file(self):
         if os.path.exists(self.file_path):
             with open(self.file_path) as file:
@@ -301,7 +332,10 @@ class Vim(QWidget):
     def keyPressEvent(self, event):
         # 根据活动模块决定响应哪个控件
         if self.active_module == 'text_editor':
-            self.handle_text_editor_keys(event)
+            if self.mode_flag != 'test':
+                self.handle_text_editor_keys(event)
+            else:
+                self.handle_test_keys(event)                
         elif self.active_module == 'command_line':
             self.handle_command_line_keys(event)
 
@@ -338,34 +372,48 @@ class Vim(QWidget):
                 self.command_line.setFocus()
 
         elif self.mode_flag == "test":
-
             if key == Qt.Key_Return or key == Qt.Key_Enter:
                 current_text = self.text_editor.toPlainText().replace('\n', '').strip()
                 if "Press Enter to exit test mode..." in current_text:
                     self.out_mode_test()
                     self.to_mode_normal()
                 else:
-                    self.text_editor.keyPressEvent()
-            # 检测 Escape，显示比对结果并提示按 Enter 退出
-            elif key == Qt.Key_Escape:
-                store_content = self.user_input
-                self.text_editor.clear()
-
-                self.text_editor.append("Test Result:\n")
-                flag = True
-                for word1, word2 in zip(self.test_content, store_content):
-                    word_processing = re.sub(r'\(.*?\)', '', word1).strip()
-                    if word_processing != word2:
-                        flag = False
-                        self.text_editor.append(f"STD: {word1} YOURS: {word2}\n")
-
-                if flag and len(self.test_content)==len(store_content):
-                    self.text_editor.append(f"Congratulations! Full Mark Dictation!")
-                # 提示用户按 Enter 退出测试模式
-                self.text_editor.append("\nPress Enter to exit test mode...")
+                    self.text_editor.keyPressEvent(event)
             else:
-
                 self.text_editor.keyPressEvent(event)
+
+    def handle_test_keys(self,event):
+        key = event.key()
+        if key == Qt.Key_Return or key == Qt.Key_Enter:
+            if event.modifiers() == Qt.ShiftModifier:
+                word_processed = re.sub(r'\(.*?\)', '', self.test_content[self.current_index]).strip()        
+                self.speak(word_processed)
+            else:
+                current_text = self.floating_window.text().strip()
+                self.user_input.append(current_text)
+                self.floating_window.clear()                 
+                self.current_index += 1                
+        # 检测 Escape，显示比对结果并提示按 Enter 退出
+        elif key == Qt.Key_Escape:
+
+            self.floating_close()
+
+            store_content = self.user_input
+            self.text_editor.clear()
+            self.text_editor.append("Test Result:\n")
+            flag = True
+            for word1, word2 in zip(self.test_content, store_content):
+                word_processing = re.sub(r'\(.*?\)', '', word1).strip()
+                if word_processing != word2:
+                    flag = False
+                    self.text_editor.append(f"STD: {word1} YOURS: {word2}\n")
+            if flag and len(self.test_content)==len(store_content):
+                self.text_editor.append(f"Congratulations! Full Mark Dictation!")
+            # 提示用户按 Enter 退出测试模式
+            self.text_editor.append("\nPress Enter to exit test mode...")
+            self.text_editor.setFocus()
+        else:
+            self.text_editor.keyPressEvent(event)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
